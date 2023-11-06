@@ -24,9 +24,9 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
     const ref = useRef<any>(null)
 
     function handlePriorityChange(i:any, newPriority: SetStateAction<string>) {
+        setTasksEdit({id: task.id, task: tasksEdit.task, priority: Number(newPriority), done: tasksEdit.done})
         setSelected((prev) => (i === prev ? null : i));
         setPriority(Number(newPriority))
-        setTasksEdit({id: task.id, task: tasksEdit.task, priority: Number(newPriority), done: tasksEdit.done})
     }
 
     function handleKeyPress(event: React.KeyboardEvent) {

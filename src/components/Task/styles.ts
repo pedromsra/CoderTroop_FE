@@ -44,7 +44,7 @@ export const Container = styled('div')<{$isHeader: boolean}>`
             display: flex;
             flex-direction: row;
             gap: 1.5rem;
-            justify-content: space-around;
+            justify-content: flex-end;
             align-items: center;
 
             label {

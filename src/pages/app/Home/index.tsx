@@ -52,7 +52,6 @@ export function Home() {
     const tasksOld = tasks
     const tasksNew = tasksOld.map((taskO) => task.id === taskO.id ? task : taskO )
     setTasks(tasksNew)
-    setUpdater(tasksNew)
   }
 
   async function handleDeleteTasks(task:{id: number, task: string, priority: number, done: boolean}) {
@@ -99,7 +98,7 @@ function handleFilterDoneChange(i:any, newFilterDone: SetStateAction<string>) {
       setTasks(response.data);
     }
     fetchTasks()
-  }, [updater])
+  }, [])
 
   useEffect(()=>{
     filterTasks()

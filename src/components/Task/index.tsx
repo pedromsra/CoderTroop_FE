@@ -67,7 +67,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
     
     return (
         <Container $isHeader={header} tabIndex={1} className={classNameIcon}
-        ref={ref}
+            ref={ref}
         >
             <div className="task" >
                 {

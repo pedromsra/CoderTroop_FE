@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FunctionComponent, SetStateAction, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, FunctionComponent, useEffect, useRef, useState } from "react";
 import { Container, Input } from "./styles";
 import { Button } from "../Button";
 import { api } from "../../services/api";

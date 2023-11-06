@@ -98,7 +98,7 @@ function handleFilterDoneChange(i:any, newFilterDone: SetStateAction<string>) {
       setTasks(response.data);
     }
     fetchTasks()
-  }, [])
+  }, [updater])
 
   useEffect(()=>{
     filterTasks()

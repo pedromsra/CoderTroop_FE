@@ -18,7 +18,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
 
     const [tasksEdit, setTasksEdit] = useState<{id?: Number, task:string, priority:number, done: boolean}>(task)
     const [priority, setPriority] = useState(task.priority);
-    const [selected, setSelected] = useState(0);
+    const [selected, setSelected] = useState(task.priority);
     const [edit, setEdit] = useState(false)
 
     const ref = useRef<any>(null)
@@ -42,7 +42,6 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
     }
 
     async function handleSave() {
-        
         await api.put(`/tasks/${task.id}`, tasksEdit && {task: tasksEdit.task, priority: tasksEdit.priority, done: tasksEdit.done});
     }
 

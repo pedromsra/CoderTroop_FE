@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FunctionComponent, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, FunctionComponent, SetStateAction, useEffect, useRef, useState } from "react";
 import { Container, Input } from "./styles";
 import { Button } from "../Button";
 import { api } from "../../services/api";
@@ -23,8 +23,9 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
 
     const ref = useRef<any>(null)
 
-    function handlePriorityChange(i:any) {
+    function handlePriorityChange(i:any, newPriority: SetStateAction<string>) {
         setSelected((prev) => (i === prev ? null : i));
+        setPriority(Number(newPriority))
     }
 
     function handleKeyPress(event: React.KeyboardEvent) {
@@ -35,7 +36,6 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
 
     function handleOutsideClick (e:any) {
         if (edit && ref.current && !ref.current.contains(e.target)) {
-            setTasksEdit({id: task.id, task: tasksEdit.task, priority: priority, done: tasksEdit.done})
             setEdit(!edit)
         }
     }
@@ -45,8 +45,8 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
     }
 
     function handleDoneClick(don:boolean) {
-        setTasksEdit({id: task.id, task: task.task, priority: priority, done: don})
         edit && setEdit(!edit)
+        setTasksEdit({id: task.id, task: task.task, priority: priority, done: don})
     }
 
     useEffect(() => {
@@ -55,6 +55,10 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
             document.removeEventListener("mousedown", handleOutsideClick);
             };
     });
+
+    useEffect(() => {
+        setTasksEdit({id: task.id, task: tasksEdit.task, priority: priority, done: tasksEdit.done})
+    }, [priority]);
 
     useEffect(() => {
         handleUpdateTasks && handleUpdateTasks(tasksEdit)
@@ -97,7 +101,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                 </div>
                 <ButtonText title="" icon={{icon: <span className="material-symbols-outlined" >delete</span>}}
                     onClick={() => {
-                        const confirm = window.confirm("Deseja realmente remover essa tarefa??");
+                        const confirm = window.confirm("Deseja realmente remover essa tarefa?");
                         if(confirm) {
                             handleDeleteTasks && handleDeleteTasks(task)
                         }
@@ -118,7 +122,6 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                         icon: <span className="material-symbols-outlined">done</span>
                     }}
                     onClick={() => {
-                        setTasksEdit({id: task.id, task: tasksEdit.task, priority: priority, done: tasksEdit.done})
                         setEdit(!edit)
                     }}
                     disabled={!edit}
@@ -132,8 +135,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                         checked={i === selected}
                         value={i}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                            setPriority(Number(e.currentTarget.value))
-                            handlePriorityChange(i)
+                            handlePriorityChange(i, e.currentTarget.value)
                         }}
                         />
                         {p}

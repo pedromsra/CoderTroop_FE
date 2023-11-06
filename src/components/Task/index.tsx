@@ -59,8 +59,8 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
     });
 
     useEffect(() => {
-        handleSave()
         handleUpdateTasks && handleUpdateTasks(tasksEdit)
+        handleSave()
     }, [tasksEdit]);
     
     return (

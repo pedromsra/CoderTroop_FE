@@ -45,6 +45,7 @@ export function Home() {
 
   function handleFilter(filter:{label: string, value: number | boolean}, filterDone:{label: string, value: boolean}) {
     setFilter({filter, filterDone})
+
   }
 
   function handleUpdateTasks(task:{id: number, task: string, priority: number, done: boolean}) {
@@ -71,20 +72,21 @@ function handleFilterDoneChange(i:any, newFilterDone: SetStateAction<string>) {
 }
 
   async function filterTasks(){
+
     let showTasks
     
     if(filter.filter.label === "Todas" && filter.filterDone.label === "Todas") {
       showTasks = tasks
     } else if (filter.filterDone.label === "Concluída"  && filter.filter.label === "Todas")  {
-      showTasks = tasks.filter((task:any) => task.done === 1);
+      showTasks = tasks.filter((task:any) => task.done === 1 || task.done === true);
     } else if (filter.filterDone.label === "Pendente"  && filter.filter.label === "Todas") {
-      showTasks = tasks.filter((task:any) => task.done === 0);
+      showTasks = tasks.filter((task:any) => task.done === 0 || task.done === false);
     }else if(filter.filter.label !== "Todas" && filter.filterDone.label === "Todas") {
       showTasks = tasks.filter((task:any) => task.priority === filter.filter.value);
     } else if (filter.filterDone.label === "Concluída"  && filter.filter.label !== "Todas")  {
-      showTasks = tasks.filter((task:any) => task.priority === filter.filter.value && task.done === 1);
+      showTasks = tasks.filter((task:any) => task.priority === filter.filter.value && task.done === 1 || task.done === true);
     } else if (filter.filterDone.label === "Pendente"  && filter.filter.label !== "Todas") {
-      showTasks = tasks.filter((task:any) => task.priority === filter.filter.value && task.done === 0);
+      showTasks = tasks.filter((task:any) => task.priority === filter.filter.value && task.done === 0 || task.done === false);
     }
     
     showTasks && setTasksFiltered(showTasks);
@@ -100,6 +102,7 @@ function handleFilterDoneChange(i:any, newFilterDone: SetStateAction<string>) {
 
   useEffect(()=>{
     filterTasks()
+    
   }, [tasks, filter])
 
   return (

@@ -97,7 +97,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                 </div>
                 <ButtonText title="" icon={{icon: <span className="material-symbols-outlined" >delete</span>}}
                     onClick={() => {
-                        const confirm = window.confirm("Deseja realmente remover essa tarefa?");
+                        const confirm = window.confirm("Deseja realmente remover essa tarefa??");
                         if(confirm) {
                             handleDeleteTasks && handleDeleteTasks(task)
                         }

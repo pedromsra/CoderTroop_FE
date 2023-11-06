@@ -23,9 +23,8 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
 
     const ref = useRef<any>(null)
 
-    function handlePriorityChange(i:any, newPriority: SetStateAction<string>) {
+    function handlePriorityChange(i:any) {
         setSelected((prev) => (i === prev ? null : i));
-        setPriority(Number(newPriority))
     }
 
     function handleKeyPress(event: React.KeyboardEvent) {
@@ -36,8 +35,8 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
 
     function handleOutsideClick (e:any) {
         if (edit && ref.current && !ref.current.contains(e.target)) {
-            setEdit(!edit)
             setTasksEdit({id: task.id, task: tasksEdit.task, priority: priority, done: tasksEdit.done})
+            setEdit(!edit)
         }
     }
 
@@ -46,8 +45,8 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
     }
 
     function handleDoneClick(don:boolean) {
-        edit && setEdit(!edit)
         setTasksEdit({id: task.id, task: task.task, priority: priority, done: don})
+        edit && setEdit(!edit)
     }
 
     useEffect(() => {
@@ -119,8 +118,8 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                         icon: <span className="material-symbols-outlined">done</span>
                     }}
                     onClick={() => {
-                        setEdit(!edit)
                         setTasksEdit({id: task.id, task: tasksEdit.task, priority: priority, done: tasksEdit.done})
+                        setEdit(!edit)
                     }}
                     disabled={!edit}
                 />}
@@ -133,7 +132,8 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                         checked={i === selected}
                         value={i}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                            handlePriorityChange(i, e.currentTarget.value)
+                            setPriority(Number(e.currentTarget.value))
+                            handlePriorityChange(i)
                         }}
                         />
                         {p}

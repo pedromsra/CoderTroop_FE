@@ -72,7 +72,7 @@ function handleFilterDoneChange(i:any, newFilterDone: SetStateAction<string>) {
 }
 
   async function filterTasks(){
-
+    console.log(tasks)
     let showTasks
     
     if(filter.filter.label === "Todas" && filter.filterDone.label === "Todas") {
@@ -196,7 +196,7 @@ function handleFilterDoneChange(i:any, newFilterDone: SetStateAction<string>) {
             )
             }
             <Button title="Aplicar filtro" onClick={() => {
-              handleFilter(filterMenu, filterDoneMenu)
+              Promise.resolve(setUpdater({filterMenu, filterDoneMenu})).then(() => handleFilter(filterMenu, filterDoneMenu))
             }} />
           </div>
           <div className="tasks">

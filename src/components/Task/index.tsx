@@ -24,7 +24,6 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
     const ref = useRef<any>(null)
 
     function handlePriorityChange(i:any, newPriority: SetStateAction<string>) {
-        setTasksEdit({id: task.id, task: tasksEdit.task, priority: Number(newPriority), done: tasksEdit.done})
         setSelected((prev) => (i === prev ? null : i));
         setPriority(Number(newPriority))
     }
@@ -38,6 +37,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
     function handleOutsideClick (e:any) {
         if (edit && ref.current && !ref.current.contains(e.target)) {
             setEdit(!edit)
+            setTasksEdit({id: task.id, task: tasksEdit.task, priority: priority, done: tasksEdit.done})
         }
     }
 
@@ -120,6 +120,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                     }}
                     onClick={() => {
                         setEdit(!edit)
+                        setTasksEdit({id: task.id, task: tasksEdit.task, priority: priority, done: tasksEdit.done})
                     }}
                     disabled={!edit}
                 />}

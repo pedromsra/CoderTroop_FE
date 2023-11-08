@@ -1,4 +1,4 @@
-import React, { FunctionComponent, MouseEventHandler, cloneElement, useState } from 'react'
+import React, { FunctionComponent, MouseEventHandler, cloneElement } from 'react'
 import { Container } from "./styles";
 
 type ButtonProps = {

@@ -8,25 +8,20 @@ type ButtonProps = {
     };
     loading?: boolean;
     outlined?: boolean;
-    toggle?: boolean;
     onClick?: MouseEventHandler
-    handleHour?: Function
 }
 
-export const Button: FunctionComponent<ButtonProps & React.ButtonHTMLAttributes<HTMLElement>> = ({icon, handleHour, loading = false, outlined = false, toggle, onClick, title, ...rest}) => {
-    const [toggleButton, setToggleButton] = useState(true)
+export const Button: FunctionComponent<ButtonProps & React.ButtonHTMLAttributes<HTMLElement>> = ({icon, loading = false, outlined = false, onClick, title, ...rest}) => {
 
 
     return(
         <Container 
             type="button" 
             disabled={loading}
-            $outlined={toggle ? toggleButton : outlined}
+            $outlined={outlined}
             {...rest}
             onClick={(e) => {
                 onClick && onClick(e)
-                setToggleButton(!toggleButton)
-                handleHour && handleHour(title)
             }}
         >
             {icon && cloneElement(icon.icon)}

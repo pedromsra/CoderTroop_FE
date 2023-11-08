@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled('div')<{$isHeader: boolean}>`
     width: 100%;
-    min-height: 4.8rem;
+    
     height: fit-content;
     
     display: flex;
@@ -44,6 +44,7 @@ export const Container = styled('div')<{$isHeader: boolean}>`
             gap: 1.5rem;
             justify-content: flex-end;
             align-items: center;
+            height: fit-content;
 
             label {
                 display: flex;

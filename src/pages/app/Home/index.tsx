@@ -38,6 +38,8 @@ export function Home() {
 
   async function handleAddNewTask(taskN:any) {
 
+    setNewTask("")
+
     await api.post("/tasks", { task: taskN, priority: priority })
 
     setUpdater(taskN)
@@ -121,7 +123,7 @@ function handleFilterDoneChange(i:any, newFilterDone: SetStateAction<string>) {
                     const taskToAdd = tasks
                     taskToAdd.push({ id: Math.random() , task: newTask, priority: priority, done: false })
                     setTasksFiltered(taskToAdd)
-                    setNewTask("")
+                    
                     handleAddNewTask(newTask)
                   }
               }}
@@ -135,7 +137,7 @@ function handleFilterDoneChange(i:any, newFilterDone: SetStateAction<string>) {
                 const taskToAdd = tasks
                 taskToAdd.push({ id: Math.random() , task: newTask, priority: priority, done: false })
                 setTasksFiltered(taskToAdd)
-                setNewTask("")
+                
                 handleAddNewTask(newTask)
               }}
               disabled={!newTask}
@@ -159,7 +161,7 @@ function handleFilterDoneChange(i:any, newFilterDone: SetStateAction<string>) {
           </div>
         </div>
         <div className="tasksAndFilter">
-          <div className="filter">
+          {tasks.length || tasksFiltered.length ? <div className="filter">
             <div className="filterHeader">
               <span className="material-symbols-outlined" >
                   filter_alt
@@ -197,7 +199,7 @@ function handleFilterDoneChange(i:any, newFilterDone: SetStateAction<string>) {
             <Button title="Aplicar filtro" onClick={() => {
               Promise.resolve(setUpdater({filterMenu, filterDoneMenu})).then(() => handleFilter(filterMenu, filterDoneMenu))
             }} />
-          </div>
+          </div> : null}
           {tasksFiltered.length ? 
             <div className="tasks">
                 {tasksFiltered.map(task => (
@@ -207,7 +209,7 @@ function handleFilterDoneChange(i:any, newFilterDone: SetStateAction<string>) {
                 ))}
             </div>
             :
-            null
+            <div className="tasksPlaceHolder"></div>
           }
         </div>
       </main>

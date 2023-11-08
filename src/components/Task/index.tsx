@@ -16,9 +16,10 @@ const priorityOptions = ['baixa', 'moderada', 'elevada', 'urgente']
 
 export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLElement>> = ({ header=false, task, classNameIcon, handleUpdateTasks, handleDeleteTasks, ...rest }) => {
 
-    const [tasksEdit, setTasksEdit] = useState<{id?: Number, task:string, priority:number, done: boolean}>(task)
+    const [tasksEdit, setTasksEdit] = useState<{id?: number, task:string, priority:number, done: boolean}>(task)
     const [priority, setPriority] = useState(task.priority);
     const [selected, setSelected] = useState(task.priority);
+    const [input, setInput] = useState(task.task)
     const [edit, setEdit] = useState(false)
 
     const ref = useRef<any>(null)
@@ -30,7 +31,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
 
     function handleKeyPress(event: React.KeyboardEvent) {
         if (event.key === "Enter") {
-            setTasksEdit({id: task.id, task: tasksEdit.task, priority: priority, done: tasksEdit.done})
+            setTasksEdit({id: task.id, task: input, priority: priority, done: tasksEdit.done})
         }
     }
 
@@ -41,7 +42,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
     }
 
     async function handleSave() {
-        await api.put(`/tasks/${task.id}`, tasksEdit && {task: tasksEdit.task, priority: tasksEdit.priority, done: tasksEdit.done});
+        tasksEdit.id && tasksEdit.id % 1 === 0 && await api.put(`/tasks/${task.id}`, tasksEdit && {task: tasksEdit.task, priority: tasksEdit.priority, done: tasksEdit.done});
     }
 
     function handleDoneClick(don:boolean) {
@@ -85,8 +86,8 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                         onClick={() => handleDoneClick(true)} />
                 }
                 <div className="inputTask">
-                    <Input $done={tasksEdit.done} {...rest} value={tasksEdit.task} onChange={(e: ChangeEvent<HTMLInputElement>) => setTasksEdit({id: task.id, task: e.currentTarget.value, priority: priority, done: tasksEdit.done})}
-                        onBlur={() => setTasksEdit({id: task.id, task: tasksEdit.task, priority: priority, done: tasksEdit.done})}
+                    <Input $done={tasksEdit.done} {...rest} value={input} onChange={(e: ChangeEvent<HTMLInputElement>) => setInput(e.currentTarget.value)}
+                        onBlur={() => setTasksEdit({id: task.id, task: input, priority: priority, done: tasksEdit.done})}
                         onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
                             if(e.key === "Enter") {
                                 handleKeyPress(e)
@@ -123,6 +124,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                     }}
                     onClick={() => {
                         setEdit(!edit)
+                        setTasksEdit({id: task.id, task: input, priority: priority, done: tasksEdit.done})
                     }}
                     disabled={!edit}
                 />}

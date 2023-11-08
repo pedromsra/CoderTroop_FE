@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled("button")<{$isActive: boolean}>`
+export const Container = styled("button")`
     width: 100%;
     background: none;
 
@@ -10,7 +10,7 @@ export const Container = styled("button")<{$isActive: boolean}>`
     font-size: 1.4rem;
     line-height: 2.4rem;
     
-    color: ${({theme, $isActive}) => $isActive ? theme.COLORS.mainLight_100 : theme.COLORS.dark_100};
+    color: ${({theme}) => theme.COLORS.mainLight_100};
 
     border: none;
     font-size: 1.4rem;

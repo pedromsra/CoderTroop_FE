@@ -135,6 +135,11 @@ export const Container = styled.div`
             flex-direction: column;
             gap: 1rem;
         }
+        .tasksPlaceHolder {
+            min-width: 70%;
+            height: 100%;
+            background-color: ${({ theme }) => theme.COLORS.light_100};
+        }
     }
 
 `;

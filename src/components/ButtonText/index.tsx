@@ -6,12 +6,11 @@ type ButtonTextProps = {
     icon?: {
         icon: JSX.Element
     };
-    isActive?: boolean;
 }
 
-export const ButtonText: FunctionComponent<ButtonTextProps & React.ButtonHTMLAttributes<HTMLElement>> = ({title, icon, isActive = false, ...rest}) => {
+export const ButtonText: FunctionComponent<ButtonTextProps & React.ButtonHTMLAttributes<HTMLElement>> = ({title, icon, ...rest}) => {
     return(
-        <Container type="button" $isActive = {isActive} {...rest}>
+        <Container type="button"  {...rest}>
             {icon && cloneElement(icon.icon)}
             {title}
         </Container>

@@ -57,8 +57,6 @@ function AuthProvider(props: AuthContextProviderProps) {
             
             const response = await api.post("/sessions", {email: props.email, password: props.password})
             
-            
-            
             const { user, token } = response.data;
 
             const {id, name, email} = user
@@ -69,12 +67,8 @@ function AuthProvider(props: AuthContextProviderProps) {
             api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
             setData({user: {id, name, email}, token})
-        } catch (err) {
-            if(err instanceof HttpError) {
-                alert(err.message)
-            } else {
-                alert("Não foi possível entrar.");
-            }
+        } catch (err:any) {
+            alert(err.response.data.message)
         }
     }
 

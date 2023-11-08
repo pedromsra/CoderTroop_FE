@@ -72,7 +72,6 @@ function handleFilterDoneChange(i:any, newFilterDone: SetStateAction<string>) {
 }
 
   async function filterTasks(){
-    console.log(tasks)
     let showTasks
     
     if(filter.filter.label === "Todas" && filter.filterDone.label === "Todas") {
@@ -199,15 +198,17 @@ function handleFilterDoneChange(i:any, newFilterDone: SetStateAction<string>) {
               Promise.resolve(setUpdater({filterMenu, filterDoneMenu})).then(() => handleFilter(filterMenu, filterDoneMenu))
             }} />
           </div>
-          <div className="tasks">
-            {
-              tasksFiltered && tasksFiltered.map(task => (
-                <Task handleUpdateTasks={handleUpdateTasks}
-                handleDeleteTasks={handleDeleteTasks}
-                key={String(task.id)} task={task} />
-              ))
-            }
-          </div>
+          {tasksFiltered.length ? 
+            <div className="tasks">
+                {tasksFiltered.map(task => (
+                  <Task handleUpdateTasks={handleUpdateTasks}
+                  handleDeleteTasks={handleDeleteTasks}
+                  key={String(task.id)} task={task} />
+                ))}
+            </div>
+            :
+            null
+          }
         </div>
       </main>
     </Container>

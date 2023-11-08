@@ -9,12 +9,17 @@ import { Input } from "../../../components/Input";
 import { Button } from "../../../components/Button";
 import { Header } from "../../../components/Header";
 
+
+
+
 export function SignIn() {
   const { signIn } = useAuth();
   const navigate = useNavigate()
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  console.log(import.meta.env.VITE_API_URL_LOCAL)
 
   function handleSignIn(){
     signIn({email, password})

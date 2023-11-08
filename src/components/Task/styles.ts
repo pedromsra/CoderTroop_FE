@@ -8,8 +8,6 @@ export const Container = styled('div')<{$isHeader: boolean}>`
     display: flex;
     flex-direction: column;
 
-    padding: 0 0 1rem 0;
-
 
     background-color: ${({theme}) => theme.COLORS.light_100};
     color: ${({theme}) => theme.COLORS.mainLight_200};

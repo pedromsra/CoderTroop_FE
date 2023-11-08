@@ -127,8 +127,8 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                     disabled={!edit}
                 />}
             </div>
-            <div className="priority">
-                {edit && priorityOptions.map((p, i) => (
+            {edit && <div className="priority">
+                {priorityOptions.map((p, i) => (
                     <label key={i}>
                         <input
                         type="checkbox"
@@ -141,7 +141,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                         {p}
                     </label>
                 ))}
-            </div>
+            </div>}
         </Container>
     )
 }

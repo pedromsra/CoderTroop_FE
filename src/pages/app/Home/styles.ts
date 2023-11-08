@@ -126,10 +126,14 @@ export const Container = styled.div`
 
             height: 100%;
 
-            margin: clamp(.5rem, 0rem + 2vw, 2rem);
+            margin-top: clamp(.5rem, 0rem + 2vw, 2rem);
             background-color: ${({ theme }) => theme.COLORS.light_100};
 
             overflow: auto;
+
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
     }
 

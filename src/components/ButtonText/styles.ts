@@ -10,7 +10,7 @@ export const Container = styled("button")`
     font-size: 1.4rem;
     line-height: 2.4rem;
     
-    color: ${({theme}) => theme.COLORS.mainLight_100};
+    color: ${({theme}) => theme.COLORS.main_100};
 
     border: none;
     font-size: 1.4rem;

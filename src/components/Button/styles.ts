@@ -6,15 +6,15 @@ export const Container = styled('button')<{$outlined: boolean}>`
     padding: 1.2rem 1rem;
     white-space: nowrap;
 
-    background-color: ${({$outlined, theme}) => $outlined ? theme.COLORS.light_100 : theme.COLORS.mainLight_200};
-    color: ${({$outlined, theme}) => $outlined ? theme.COLORS.mainLight_200 : theme.COLORS.light_100 };
+    background-color: ${({$outlined, theme}) => $outlined ? theme.COLORS.secondary_100 : theme.COLORS.main_200};
+    color: ${({$outlined, theme}) => $outlined ? theme.COLORS.main_200 : theme.COLORS.secondary_100 };
 
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1.1rem;
     
-    border: 2px solid ${({theme}) => theme.COLORS.mainLight_200};
+    border: 2px solid ${({theme}) => theme.COLORS.main_200};
     
     font-family: ${({theme}) => theme.fonts.content};
     font-style: normal;

@@ -9,8 +9,8 @@ export const Container = styled('div')<{$isHeader: boolean}>`
     flex-direction: column;
 
 
-    background-color: ${({theme}) => theme.COLORS.light_100};
-    color: ${({theme}) => theme.COLORS.mainLight_200};
+    background-color: ${({theme}) => theme.COLORS.secondary_100};
+    color: ${({theme}) => theme.COLORS.main_200};
 
     .task {
         display: flex;
@@ -54,7 +54,7 @@ export const Container = styled('div')<{$isHeader: boolean}>`
 
                 text-transform: capitalize;
 
-                color: ${({theme}) => theme.COLORS.mainLight_200};
+                color: ${({theme}) => theme.COLORS.main_200};
             }
         }
 
@@ -78,16 +78,16 @@ export const Input = styled('input')<{$done: boolean}>`
     
 
     &::placeholder {
-        color: ${({theme}) => theme.COLORS.mainLight_100};
+        color: ${({theme}) => theme.COLORS.main_100};
     }
 
     &:enabled {
-        border: 1px solid ${({theme}) => theme.COLORS.mainLight_100};
-        color: ${({theme}) => theme.COLORS.mainLight_300};
+        border: 1px solid ${({theme}) => theme.COLORS.main_100};
+        color: ${({theme}) => theme.COLORS.main_300};
     }
 
     &:disabled {
         text-decoration: ${({$done}) => $done ? 'line-through' : 'none'};
-        color: ${({$done, theme}) => $done ? theme.COLORS.light_600 : theme.COLORS.light_700};
+        color: ${({$done, theme}) => $done ? theme.COLORS.secondary_600 : theme.COLORS.secondary_700};
     }
 `

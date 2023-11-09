@@ -15,7 +15,7 @@ export const Container = styled('div')<{$menu: boolean, $user: boolean}>`
     align-items: center;
     justify-content: center;
 
-    border-bottom: 1px solid ${({theme}) => theme.COLORS.mainLight_100};
+    border-bottom: 1px solid ${({theme}) => theme.COLORS.main_100};
 
     margin-bottom: 2rem;
     
@@ -33,7 +33,7 @@ export const Container = styled('div')<{$menu: boolean, $user: boolean}>`
                 font-size: clamp(2.4rem, 1.8rem + 2.5vw, 4rem);
                 font-weight: 500;
     
-                color: ${({theme}) => theme.COLORS.mainLight};
+                color: ${({theme}) => theme.COLORS.main};
             }
     
         }
@@ -56,7 +56,7 @@ export const Container = styled('div')<{$menu: boolean, $user: boolean}>`
             flex-direction: row;
             align-items: center;
             gap: .3rem;
-            color: ${({theme}) => theme.COLORS.mainLight_300};
+            color: ${({theme}) => theme.COLORS.main_300};
             font-size: clamp(1rem, 0rem + 3vw, 1.4rem);
             text-transform: capitalize;
 
@@ -99,14 +99,14 @@ export const Container = styled('div')<{$menu: boolean, $user: boolean}>`
         z-index: 99;
 
         padding: 0 1.6rem 2.4rem 1.6rem;
-        background-color: ${({theme}) => theme.COLORS.light_100};
+        background-color: ${({theme}) => theme.COLORS.secondary_100};
 
         width: 100%;
 
         font-family: ${({theme}) => theme.fonts.content};
         font-size: 1.6rem;
         
-        color: ${({theme}) => theme.COLORS.mainLight_200};
+        color: ${({theme}) => theme.COLORS.main_200};
 
         display: flex;
         flex-direction: column;
@@ -123,7 +123,7 @@ export const Container = styled('div')<{$menu: boolean, $user: boolean}>`
 
         a {
             text-decoration: none;
-            color: ${({theme}) => theme.COLORS.mainLight_200};
+            color: ${({theme}) => theme.COLORS.main_200};
         }
 
         .mainInst {
@@ -155,7 +155,7 @@ export const Container = styled('div')<{$menu: boolean, $user: boolean}>`
 
             .material-symbols-outlined {
                 font-size: 2.4rem;
-                color: ${({theme}) => theme.COLORS.mainLight_200};
+                color: ${({theme}) => theme.COLORS.main_200};
             }
 
 
@@ -170,11 +170,11 @@ export const Container = styled('div')<{$menu: boolean, $user: boolean}>`
     }
 
 
-    background-color: ${({theme}) => theme.COLORS.light_100};
+    background-color: ${({theme}) => theme.COLORS.secondary_100};
 
     
     .material-symbols-outlined {
-        color: ${({theme}) => theme.COLORS.mainLight};
+        color: ${({theme}) => theme.COLORS.main};
         font-size: clamp(2rem, 0rem + 6vw, 3.2rem);
         &:hover {
             cursor: pointer;

@@ -16,7 +16,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
 
-    background-color: ${({theme}) => theme.COLORS.light_300};
+    background-color: ${({theme}) => theme.COLORS.secondary_300};
 
     overflow: hidden;
 `;
@@ -42,7 +42,7 @@ export const Form = styled.div`
         gap: 1.2rem;
         align-items: center;
     
-        background-color: ${({theme}) => theme.COLORS.light_200};
+        background-color: ${({theme}) => theme.COLORS.secondary_200};
         border-radius: 1rem;
 
         margin-bottom: 1rem;
@@ -70,7 +70,7 @@ export const Form = styled.div`
 
         a {
             font-size: 1.5rem;
-            color: ${({theme}) => theme.COLORS.mainLight_200};
+            color: ${({theme}) => theme.COLORS.main_200};
         }
 
     }
@@ -90,7 +90,7 @@ export const Form = styled.div`
         padding-bottom: .8rem;
         display:inline-block;
 
-        color: ${({theme}) => theme.COLORS.mainLight_300};
+        color: ${({theme}) => theme.COLORS.main_300};
         font-weight: 500;
     }
 
@@ -104,7 +104,7 @@ export const Form = styled.div`
         line-height: 1.6;
 
         a {
-            color: ${({theme}) => theme.COLORS.mainLight_200};
+            color: ${({theme}) => theme.COLORS.main_200};
         }
     }
 

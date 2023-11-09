@@ -1,4 +1,5 @@
 import { ChangeEvent, FunctionComponent, SetStateAction, useEffect, useRef, useState } from "react";
+import { useDispatch, ProviderProps } from "react-redux";
 
 // import { useAuth } from "../../hooks/auth";
 
@@ -11,10 +12,12 @@ import { Button } from "../Button/index.tsx";
 
 import { useAuth } from "../../hooks/auth"
 import { ButtonText } from "../ButtonText/index.tsx";
+import { applyTheme } from "../../redux/themeActions.tsx";
+import { darkTheme, lightTheme } from "../../styles/theme.ts";
+import { useStore } from "react-redux";
 
 type HeaderProps = {
     handleFilter?: Function
-    
 }
 
 const filterOptions = [{label: 'Todas', value: true}, {label: 'Prioridade baixa', value: 0}, {label: 'Prioridade moderada', value: 1}, {label: 'Prioridade alta', value: 2}, {label: 'Prioridade urgente', value: 3}]
@@ -27,6 +30,15 @@ export const Header: FunctionComponent<HeaderProps> = ({handleFilter}) => {
     const [selectedDone, setSelectedDone] = useState(0)
     const [filter, setFilter] = useState(filterOptions[selected])
     const [filterDone, setFilterDone] = useState(filterDoneOptions[selectedDone])
+
+    const store = useStore<any>()
+
+    const dispatch = useDispatch();
+
+    const changeTheme = (theme: any) => {
+        dispatch(applyTheme(theme));
+    }
+
 
     const ref = useRef<any>(null)
 
@@ -64,6 +76,12 @@ export const Header: FunctionComponent<HeaderProps> = ({handleFilter}) => {
         <Container $menu={toggleMenu} $user={user ? true : false} ref={ref} >
             <div className="main">
                 {user ? <ButtonText title="" className="logout" icon={{icon:<span className="material-symbols-outlined" >logout</span>}} onClick={() => handleSignOut()} /> : null}
+                {store.getState() && store.getState().theme.title === "darkTheme" ? 
+                <ButtonText title="" icon={{icon: <span className="material-symbols-outlined">light_mode</span>}} onClick={() => changeTheme(lightTheme)} />
+                :
+                <ButtonText title="" icon={{icon: <span className="material-symbols-outlined">dark_mode</span>}} onClick={() => changeTheme(darkTheme)} />
+                }
+
                 <Link to="/"><div className="logo"><h1>Painel de Tarefas</h1></div></Link>
                 {user ? <div className="menuPopUp" onClick={() => setToggleMenu(!toggleMenu)} >
                     {!toggleMenu ?

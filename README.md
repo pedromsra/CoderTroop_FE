@@ -6,6 +6,7 @@
   - [Backend: APIRest](#backend-apirest)
   - [Variáveis de ambiente](#variáveis-de-ambiente)
   - [Cores e fontes](#cores-e-fontes)
+  - [Temas](#temas)
   - [Páginas](#páginas)
     - [SignUp](#signup)
     - [SignIn](#signin)
@@ -26,6 +27,7 @@ Fronted para aplicação WEB para registrar Tarefas com classificação de prior
 - Ambiente de desenvolvimento construído com Vite v4.4.5;
 - Préprocessador de CSS StyledComponents v6.0.8;
 - Requisições HTTP com Axios v1.5.1;
+- Gerenciamento de estados global Redux v4.2.1;
 
 ## Primeiros passos
 
@@ -57,6 +59,14 @@ Fronted para aplicação WEB para registrar Tarefas com classificação de prior
 ## Cores e fontes
 
 - As cores e fontes utilizadas na aplicação estão definidas no arquivo /src/styles/theme.ts, é fortemente recomendado que alterações de cores e fontes seja realizadas diretamente no arquivo theme.ts;
+
+## Temas
+
+- Utilizou-se Redux para implementar uma versão escura (Darkmode)
+- Dessa maneira há themesLight{} com cores para a versão clara e themeDark{} com as cores para a versão escura no arquivo /src/styles/theme.ts
+- Segue .gif do funcionamento:
+
+![Modes](src/assets/readme/darklightmode.gif)
 
 ## Páginas
 

@@ -49,7 +49,7 @@ export const Container = styled.div`
 
                 font-size: clamp(1.2rem, 0rem + 3vw, 1.4rem);
 
-                color: ${({ theme }) => theme.COLORS.mainLight_200};
+                color: ${({ theme }) => theme.COLORS.main_200};
             }
         }
 
@@ -88,7 +88,7 @@ export const Container = styled.div`
 
                     padding: 2rem;
 
-                    color: ${({ theme }) => theme.COLORS.mainLight_300};
+                    color: ${({ theme }) => theme.COLORS.main_300};
                     font-size: clamp(1rem, 0rem + 3vw, 1.4rem);
                     text-transform: capitalize;
 
@@ -127,7 +127,7 @@ export const Container = styled.div`
             height: 100%;
 
             margin-top: clamp(.5rem, 0rem + 2vw, 2rem);
-            background-color: ${({ theme }) => theme.COLORS.light_100};
+            background-color: ${({ theme }) => theme.COLORS.secondary_100};
 
             overflow: auto;
 
@@ -138,7 +138,7 @@ export const Container = styled.div`
         .tasksPlaceHolder {
             min-width: 70%;
             height: 100%;
-            background-color: ${({ theme }) => theme.COLORS.light_100};
+            background-color: ${({ theme }) => theme.COLORS.secondary_100};
         }
     }
 

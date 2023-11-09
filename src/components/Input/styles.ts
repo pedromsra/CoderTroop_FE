@@ -10,14 +10,14 @@ export const Container = styled('div')<{$isHeader: boolean}>`
 
     padding: 1rem;
 
-    background-color: ${({theme}) => theme.COLORS.light_100};
-    color: ${({theme}) => theme.COLORS.mainLight_200};
+    background-color: ${({theme}) => theme.COLORS.secondary_100};
+    color: ${({theme}) => theme.COLORS.main_200};
 
     > input {
         width: 100%;
         padding: 0 0 0 1rem;
 
-        color: ${({theme}) => theme.COLORS.mainLight_300};
+        color: ${({theme}) => theme.COLORS.main_300};
         background: transparent;
         border: 0;
 
@@ -26,7 +26,7 @@ export const Container = styled('div')<{$isHeader: boolean}>`
         font-weight: 400;
 
         &::placeholder {
-            color: ${({theme}) => theme.COLORS.mainLight_100};
+            color: ${({theme}) => theme.COLORS.main_100};
         }
 
     }

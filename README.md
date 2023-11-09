@@ -34,7 +34,7 @@ Fronted para aplicação WEB para registrar Tarefas com classificação de prior
 - Para os fins desse projeto será considerado a [porta](http://localhost:3009);
 - Criar, no root, um arquivo .env com o mesmo conteúdo do arquivo sample.env;
   - VITE_API_URL=https://codertroop-api.onrender.com
-  - VITE_API_URL_LOCAL=http://localhost:3003
+  - VITE_API_URL_LOCAL=https://codertroop-api.onrender.com
 - Abrir o terminal e digitar:
   - `$ cd /local_da_pasta_onde_a_aplicação_foi_salva`
   - `$ npm install`
@@ -43,8 +43,7 @@ Fronted para aplicação WEB para registrar Tarefas com classificação de prior
 ## Backend: APIRest
 
 - O app funciona integrado à um [backend APIRest](https://github.com/pedromsra/CoderTroop_API):
-  - No abiente de desenvolvimento: a [porta é local](http://localhost:3003);
-  - No ambiente de produção: se conecta à [API](https://codertroop-api.onrender.com) hospedada na nuvem;
+  - A API está rodando no endereço: [API](https://codertroop-api.onrender.com) hospedada na nuvem;
   - Para alterar a porta ou endereço do Backend, ver [Variáveis de ambiente](#variáveis-de-ambiente);
 
 ## Variáveis de ambiente
@@ -52,7 +51,7 @@ Fronted para aplicação WEB para registrar Tarefas com classificação de prior
 - Conforme arquivo sample.env as variáveis de ambiente utilizadas são:
   - VITE_API_URL, que indica o endereço da API utilizada no ambiente de produção;
   - VITE_API_URL_LOCAL, que indica o endereço da API utilizada no ambiente de desenvolvimento;
-  - Para utilizar o ambiente de desenvolvimento e a API hospedada na núvem é necessaio acessar o arquivo /src/.env e mudar o valor da chave VITE_API_URL para o endereço e porta local; ex:
+  - Para utilizar o ambiente de desenvolvimento e a API localmente é necessaio acessar o arquivo /src/.env e mudar o valor da chave VITE_API_URL para o endereço e porta local; ex:
     - VITE_API_URL=http://localhost:3003;
 
 ## Cores e fontes

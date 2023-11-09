@@ -67,15 +67,21 @@ Segue a imagens das páginas utilizadas nessa aplicação.
 
 ### SignUp
 
-![](src/assets/readme/SignUp.png)
+![Sign Up Desktop](src/assets/readme/signUpDesktop.png)
+
+![Sign Up Mobile](src/assets/readme/signUpMobile.png)
 
 ### SignIn
 
-![](src/assets/readme/SignIn.png)
+![Sign In Desktop](src/assets/readme/signInDesktop.png)
+
+![Sign In Mobile](src/assets/readme/signInMobile.png)
 
 ### Home
 
-![](src/assets/readme/Home.png)
+![Home Desktop](src/assets/readme/homeDesktop.png)
+
+![Home Mobile](src/assets/readme/homeMobile.png)
 
 ## Componentes
 

@@ -16,10 +16,11 @@ const priorityOptions = ['baixa', 'moderada', 'elevada', 'urgente']
 
 export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLElement>> = ({ header=false, task, classNameIcon, handleUpdateTasks, handleDeleteTasks, ...rest }) => {
 
-    const [tasksEdit, setTasksEdit] = useState<{id?: number, task:string, priority:number, done: boolean}>(task)
+    const [tasksEdit, setTasksEdit] = useState<{id?: number, task:string, priority:number, done: boolean}>()
     const [priority, setPriority] = useState(task.priority);
     const [selected, setSelected] = useState(task.priority);
     const [input, setInput] = useState(task.task)
+    const [done, setDone] = useState(task.done)
     const [edit, setEdit] = useState(false)
 
     const ref = useRef<any>(null)
@@ -31,7 +32,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
 
     function handleKeyPress(event: React.KeyboardEvent) {
         if (event.key === "Enter") {
-            setTasksEdit({id: task.id, task: input, priority: priority, done: tasksEdit.done})
+            setTasksEdit({id: task.id, task: input, priority: priority, done: done})
         }
     }
 
@@ -42,12 +43,13 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
     }
 
     async function handleSave() {
-        tasksEdit.id && tasksEdit.id % 1 === 0 && await api.put(`/tasks/${task.id}`, tasksEdit && {task: tasksEdit.task, priority: tasksEdit.priority, done: tasksEdit.done});
+        tasksEdit && Object.keys(tasksEdit).length && tasksEdit.id && tasksEdit.id % 1 === 0 && await api.put(`/tasks/${task.id}`, {task: input, priority: priority, done: done});
     }
 
     function handleDoneClick(don:boolean) {
         edit && setEdit(!edit)
-        setTasksEdit({id: task.id, task: task.task, priority: priority, done: don})
+        setDone(!done)
+        setTasksEdit({id: task.id, task: input, priority: priority, done: don})
     }
 
     useEffect(() => {
@@ -58,12 +60,12 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
     });
 
     useEffect(() => {
-        setTasksEdit({id: task.id, task: tasksEdit.task, priority: priority, done: tasksEdit.done})
+        tasksEdit && Object.keys(tasksEdit).length && setTasksEdit({id: task.id, task: input, priority: priority, done: done})
     }, [priority]);
 
     useEffect(() => {
-        handleUpdateTasks && handleUpdateTasks(tasksEdit)
-        handleSave()
+        tasksEdit && Object.keys(tasksEdit).length && handleUpdateTasks && handleUpdateTasks(tasksEdit)
+        tasksEdit && Object.keys(tasksEdit).length && handleSave()
     }, [tasksEdit]);
     
     return (
@@ -72,7 +74,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
         >
             <div className="task" >
                 {
-                    tasksEdit.done ?  
+                    done ?  
                     <Button title="" outlined 
                         icon={{icon: <span className="material-symbols-outlined"
                             >radio_button_checked
@@ -86,8 +88,8 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                         onClick={() => handleDoneClick(true)} />
                 }
                 <div className="inputTask">
-                    <Input $done={tasksEdit.done} {...rest} value={input} onChange={(e: ChangeEvent<HTMLInputElement>) => setInput(e.currentTarget.value)}
-                        onBlur={() => setTasksEdit({id: task.id, task: input, priority: priority, done: tasksEdit.done})}
+                    <Input $done={done} {...rest} value={input} onChange={(e: ChangeEvent<HTMLInputElement>) => setInput(e.currentTarget.value)}
+                        onBlur={() => setTasksEdit({id: task.id, task: input, priority: priority, done: done})}
                         onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
                             if(e.key === "Enter") {
                                 handleKeyPress(e)
@@ -106,7 +108,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                         if(confirm) {
                             handleDeleteTasks && handleDeleteTasks(task)
                         }
-                    }} disabled={tasksEdit.done}
+                    }} disabled={done}
                     className="delete"
                 />
                 {!edit && <Button title="" 
@@ -116,7 +118,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                     onClick={() => {
                         setEdit(!edit)
                     }}
-                    disabled={edit || tasksEdit.done}
+                    disabled={edit || done}
                 />}
                 {edit && <Button title="" 
                     icon={{
@@ -124,7 +126,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                     }}
                     onClick={() => {
                         setEdit(!edit)
-                        setTasksEdit({id: task.id, task: input, priority: priority, done: tasksEdit.done})
+                        setTasksEdit({id: task.id, task: input, priority: priority, done: done})
                     }}
                     disabled={!edit}
                 />}

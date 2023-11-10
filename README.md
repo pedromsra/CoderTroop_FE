@@ -7,6 +7,7 @@
   - [Variáveis de ambiente](#variáveis-de-ambiente)
   - [Cores e fontes](#cores-e-fontes)
   - [Temas](#temas)
+  - [Teste (em desenvolvimento)](#teste-em-desenvolvimento)
   - [Páginas](#páginas)
     - [SignUp](#signup)
     - [SignIn](#signin)
@@ -28,6 +29,7 @@ Fronted para aplicação WEB para registrar Tarefas com classificação de prior
 - Préprocessador de CSS StyledComponents v6.0.8;
 - Requisições HTTP com Axios v1.5.1;
 - Gerenciamento de estados global Redux v4.2.1;
+- Teste com Jest v29.7.0 e React-Testing-Library v14.1.0;
 
 ## Primeiros passos
 
@@ -62,11 +64,17 @@ Fronted para aplicação WEB para registrar Tarefas com classificação de prior
 
 ## Temas
 
-- Utilizou-se Redux para implementar uma versão escura (Darkmode)
-- Dessa maneira há themesLight{} com cores para a versão clara e themeDark{} com as cores para a versão escura no arquivo /src/styles/theme.ts
+- Utilizou-se Redux em conjunto do Styled Components ThemeProvider para implementar uma versão escura (Darkmode)
+- Dessa maneira há lightTheme{} com cores para a versão clara e darkTheme{} com as cores para a versão escura no arquivo /src/styles/theme.ts
 - Segue .gif do funcionamento:
 
 ![Modes](src/assets/readme/darklightmode.gif)
+
+## Teste (em desenvolvimento)
+
+- Testes com Jest e React-Testing-Library;
+- Escopo: Até o momento foi implementado testes para o Componente Task, responsável por renderizar uma tarefa na Página Home. Foi implementado teste para o 'clique' no botão de editar tarefa e no ícone de concluir a tarefa;
+- Para executar os teste: `npm run test`
 
 ## Páginas
 

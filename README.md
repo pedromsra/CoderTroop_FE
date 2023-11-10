@@ -73,7 +73,10 @@ Fronted para aplicação WEB para registrar Tarefas com classificação de prior
 ## Teste (em desenvolvimento)
 
 - Testes com Jest e React-Testing-Library;
-- Escopo: Até o momento foi implementado testes para o Componente Task, responsável por renderizar uma tarefa na Página Home. Foi implementado teste para o 'clique' no botão de editar tarefa e no ícone de concluir a tarefa;
+- Escopo: Até o momento foi implementado testes para o Componente Task, responsável por renderizar uma tarefa na Página Home.
+  - Foi implementado teste, verificando a ocorrência das consequências esperadas, para:
+    - 'clique' no botão de editar tarefa; e
+    - 'clique' no ícone de concluir a tarefa;
 - Para executar os teste: `npm run test`
 
 ## Páginas

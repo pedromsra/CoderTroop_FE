@@ -8,8 +8,8 @@ type TaskProps = {
     header?: boolean;
     classNameIcon?: string;
     task: {id?: number, task: string, priority: number, done: boolean};
-    handleUpdateTasks?: Function
-    handleDeleteTasks?: Function
+    handleUpdateTasks?: Function;
+    handleDeleteTasks?: Function;
 }
 
 const priorityOptions = ['baixa', 'moderada', 'elevada', 'urgente']
@@ -138,6 +138,7 @@ export const Task: FunctionComponent<TaskProps & React.InputHTMLAttributes<HTMLE
                         type="checkbox"
                         checked={i === selected}
                         value={i}
+                        className="priorityOption"
                         onChange={(e: ChangeEvent<HTMLInputElement>) => {
                             handlePriorityChange(i, e.currentTarget.value)
                         }}

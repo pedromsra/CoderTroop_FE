@@ -3,5 +3,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: import.meta.env.PROD ? import.meta.env.VITE_API_URL : import.meta.env.VITE_API_URL_LOCAL //URL deve sempre ser maiusculo
+    baseURL: process.env.PROD ? process.env.VITE_API_URL : process.env.VITE_API_URL_LOCAL
 });
